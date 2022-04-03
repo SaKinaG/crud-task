@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body class="d-flex justify-content-center align-items-center">
+<div class="w-50 h-100 p-2" style="background-color: cornsilk">
+    <div class="w-100 d-flex justify-content-center align-items-center m-3">
+        <h2>Add book form</h2>
+    </div>
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <form action="#" th:action="@{/books/add-book}" th:object="${book}" method="post">
+            <div class="w-100 d-flex justify-content-center align-items-center m-4">
+                <label for="author">Author: </label>
+                <select id="author" th:field="*{authorId}">
+                    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.fullName}"></option>
+                </select>
+            </div>
+            <div class="w-100 d-flex justify-content-center align-items-center m-4">
+                <label for="description" >Description: </label>
+                <input type="text" th:field="*{description}" id="description" placeholder="Book name">
+            </div>
+            <div class="w-100 d-flex justify-content-center align-items-center m-4">
+                <input class="btn btn-success" type="submit" value="Add book">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
